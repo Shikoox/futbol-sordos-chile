@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fútbol para Sordos Chile - Transmisión en Vivo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(to right, #0039A6, #D52B1E);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .video-container {
+            flex: 2;
+            min-width: 300px;
+        }
+        .ls-interpreter {
+            flex: 1;
+            min-width: 250px;
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .youtube-iframe {
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            border: none;
+        }
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #D52B1E;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #B22222;
+        }
+        .subtitles {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff;
+            min-height: 100px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .accessibility-options {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #eef7ff;
+            border-radius: 8px;
+        }
+        .team-info {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .team {
+            text-align: center;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            min-width: 200px;
+            margin: 10px;
+        }
+        .high-contrast {
+            background-color: #000;
+            color: #FFF;
+        }
+        .high-contrast .subtitles,
+        .high-contrast .team,
+        .high-contrast .ls-interpreter {
+            background-color: #333;
+            color: #FFF;
+            border-color: #FFF;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .youtube-iframe {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Campeonato Nacional de Fútbol para Sordos de Chile</h1>
+        <p>Transmisión en vivo con accesibilidad - Liga de Sordos Chile</p>
+    </header>
+
+    <div class="team-info">
+        <div class="team">
+            <h2>ASOCH</h2>
+            <p>Equipo local</p>
+            <img src="https://via.placeholder.com/80x80/0039A6/FFFFFF?text=UCH" alt="Escudo U. de Chile" width="80">
+        </div>
+        <div class="team">
+            <h2>VS</h2>
+            <p>Campeonato Nacional en Estadio Nacional</p>
+            <p>14:00 hrs</p>
+        </div>
+        <div class="team">
+            <h2>CERSOR</h2>
+            <p>Equipo visitante</p>
+            <img src="https://via.placeholder.com/80x80/FFFFFF/000000?text=CC" alt="Escudo Colo-Colo" width="80">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="video-container">
+            <!-- NUEVO IFRAME DE YOUTUBE (TU TRANSMISIÓN) -->
+            <iframe 
+                class="youtube-iframe"
+                src="https://www.youtube.com/embed/J-jw5fFpg4o?autoplay=1&cc_load_policy=1&mute=0" 
+                title="Transmisión en vivo - Partido para sordos"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+            
+            <div class="subtitles" id="liveSubtitles">
+                <h3>Subtítulos en tiempo real</h3>
+                <p id="subtitleText">[El partido está por comenzar en el Estadio Nacional...]</p>
+            </div>
+            
+            <div class="controls">
+                <button onclick="toggleSignLanguage()">Mostrar Intérprete de LSCh</button>
+                <button onclick="increaseTextSize()">Aumentar texto</button>
+                <button onclick="decreaseTextSize()">Disminuir texto</button>
+                <button onclick="toggleHighContrast()">Alto contraste</button>
+            </div>
+        </div>
+        
+        <div class="ls-interpreter" id="signLanguageInterpreter" style="display: none;">
+            <h2>Intérprete de Lengua de Señas Chilena (LSCh)</h2>
+            <video id="interpreterVideo" width="100%" controls poster="https://via.placeholder.com/400x225/333333/FFFFFF?text=Intérprete+LSCh">
+                <source src="interpreter.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    
+    <div class="accessibility-options">
+        <h2>Opciones de Accesibilidad</h2>
+        <p>Esta transmisión incluye características especiales para la comunidad sorda:</p>
+        <ul>
+            <li><strong>Subtítulos en tiempo real</strong> con descripción de sonidos ambientales</li>
+            <li><strong>Intérprete de LSCh</strong> (Lengua de Señas Chilena)</li>
+            <li><strong>Notificaciones visuales</strong> para goles, faltas y cambios</li>
+            <li><strong>Compatibilidad</strong> con la Federación de Sordos de Chile (FESOCH)</li>
+        </ul>
+        <p>En colaboración con el <strong>Ministerio del Deporte de Chile</strong> y <strong>IND</strong></p>
+    </div>
+    
+    <script>
+        // Funciones para los controles de accesibilidad
+        function toggleSignLanguage() {
+            const interpreter = document.getElementById('signLanguageInterpreter');
+            if (interpreter.style.display === 'none') {
+                interpreter.style.display = 'block';
+                document.getElementById('interpreterVideo').play();
+            } else {
+                interpreter.style.display = 'none';
+                document.getElementById('interpreterVideo').pause();
+            }
+        }
+        
+        function increaseTextSize() {
+            const elements = document.querySelectorAll('body, p, li, button, h1, h2, h3');
+            elements.forEach(el => {
+                const currentSize = window.getComputedStyle(el, null).getPropertyValue('font-size');
+                const current = parseFloat(currentSize);
+                el.style.fontSize = (current + 1) + 'px';
+            });
+        }
+        
+        function decreaseTextSize() {
+            const elements = document.querySelectorAll('body, p, li, button, h1, h2, h3');
+            elements.forEach(el => {
+                const currentSize = window.getComputedStyle(el, null).getPropertyValue('font-size');
+                const current = parseFloat(currentSize);
+                el.style.fontSize = (current - 1) + 'px';
+            });
+        }
+        
+        function toggleHighContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+        
+        // Simulación de subtítulos en vivo con lenguaje chileno
+        const chileanSubtitles = [
+            "[Silbato] El árbitro Marcelo Miranda da comienzo al clásico",
+            "La U inicia con posesión del balón, Sánchez con pelota controlada",
+            "[Griterío en las galerías] La barra brava corea 'Chi-chi-chi-le-le-le'",
+            "¡Falta dura! El jugador de Colo-Colo cae en el medio campo",
+            "¡Gooool de la ASOCH! El delantero anota con un chanfle al ángulo",
+            "El entrenador pide cambio, se prepara el jugador en la banda",
+            "[Silbato] El juez señala tiro libre en el borde del área",
+            "Pitazo final! La ASOCH gana 2-1 en un partido emocionante"
+        ];
+        
+        let subIndex = 0;
+        setInterval(() => {
+            document.getElementById('subtitleText').textContent = chileanSubtitles[subIndex];
+            subIndex = (subIndex + 1) % chileanSubtitles.length;
+        }, 8000);
+        
+        // Notificación visual mejorada (sin alert)
+        function showVisualAlert(message) {
+            const alertDiv = document.createElement('div');
+            alertDiv.style.position = 'fixed';
+            alertDiv.style.top = '20px';
+            alertDiv.style.right = '20px';
+            alertDiv.style.backgroundColor = '#D52B1E';
+            alertDiv.style.color = 'white';
+            alertDiv.style.padding = '15px';
+            alertDiv.style.borderRadius = '8px';
+            alertDiv.style.zIndex = '1000';
+            alertDiv.style.animation = 'fadeInOut 3s';
+            alertDiv.innerHTML = `⚽ ${message}`;
+            
+            document.body.appendChild(alertDiv);
+            setTimeout(() => alertDiv.remove(), 3000);
+        }
+        
+        // Simular eventos del partido
+        setTimeout(() => {
+            showVisualAlert("¡GOOL! ASOCH 1 - CERSOR 0 (minuto 23')");
+        }, 20000);
+    </script>
+</body>
+</html>
