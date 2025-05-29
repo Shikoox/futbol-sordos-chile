@@ -147,115 +147,352 @@
                 referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen>
             </iframe>
-            
-            <div class="subtitles" id="liveSubtitles">
-                <h3>Subtítulos en tiempo real</h3>
-                <p id="subtitleText">[El partido está por comenzar en el Estadio Nacional...]</p>
-            </div>
-            
-            <div class="controls">
-                <button onclick="toggleSignLanguage()">Mostrar Intérprete de LSCh</button>
-                <button onclick="increaseTextSize()">Aumentar texto</button>
-                <button onclick="decreaseTextSize()">Disminuir texto</button>
-                <button onclick="toggleHighContrast()">Alto contraste</button>
-            </div>
-        </div>
-        
-        <div class="ls-interpreter" id="signLanguageInterpreter" style="display: none;">
-            <h2>Intérprete de Lengua de Señas Chilena (LSCh)</h2>
-            <video id="interpreterVideo" width="100%" controls poster="https://via.placeholder.com/400x225/333333/FFFFFF?text=Intérprete+LSCh">
-                <source src="interpreter.mp4" type="video/mp4">
-            </video>
-        </div>
+    <section id="calendario" class="seccion-calendario">
+  <div class="encabezado-seccion">
+    <h2>Calendario de Partidos</h2>
+    <div class="filtros">
+      <select id="filtro-equipo" class="filtro">
+        <option value="todos">Todos los equipos</option>
+        <option value="ASOCH">ASOCH</option>
+        <option value="CERSOR">CERSOR</option>
+        <option value="Deportes Sordos">Deportes Sordos</option>
+        <option value="Fuerza Sorda">Fuerza Sorda</option>
+      </select>
+      <select id="filtro-estado" class="filtro">
+        <option value="todos">Todos los estados</option>
+        <option value="Programado">Programado</option>
+        <option value="En juego">En juego</option>
+        <option value="Finalizado">Finalizado</option>
+        <option value="Cancelado">Cancelado</option>
+      </select>
     </div>
+  </div>
+
+  <div class="contenedor-tabla">
+    <table class="tabla-partidos">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Local</th>
+          <th>VS</th>
+          <th>Visitante</th>
+          <th>Lugar</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Fecha">01/07/2025</td>
+          <td data-label="Hora">16:00</td>
+          <td data-label="Local" class="equipo-local">ASOCH</td>
+          <td class="vs">VS</td>
+          <td data-label="Visitante" class="equipo-visitante">Deportes Sordos</td>
+          <td data-label="Lugar">Estadio Nacional</td>
+          <td data-label="Estado"><span class="estado programado">Programado</span></td>
+          <td data-label="Acciones"><button class="btn-detalle">Ver detalles</button></td>
+        </tr>
+        <tr>
+          <td data-label="Fecha">03/07/2025</td>
+          <td data-label="Hora">17:00</td>
+          <td data-label="Local" class="equipo-local">CERSOR</td>
+          <td class="vs">VS</td>
+          <td data-label="Visitante" class="equipo-visitante">Fuerza Sorda</td>
+          <td data-label="Lugar">Estadio Santa Laura</td>
+          <td data-label="Estado"><span class="estado programado">Programado</span></td>
+          <td data-label="Acciones"><button class="btn-detalle">Ver detalles</button></td>
+        </tr>
+        <tr>
+          <td data-label="Fecha">05/07/2025</td>
+          <td data-label="Hora">16:00</td>
+          <td data-label="Local" class="equipo-local">ASOCH</td>
+          <td class="vs">VS</td>
+          <td data-label="Visitante" class="equipo-visitante">CERSOR</td>
+          <td data-label="Lugar">Estadio Nacional</td>
+          <td data-label="Estado"><span class="estado programado">Programado</span></td>
+          <td data-label="Acciones"><button class="btn-detalle">Ver detalles</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <style>
+    .seccion-calendario {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 30px auto;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
     
-    <div class="accessibility-options">
-        <h2>Opciones de Accesibilidad</h2>
-        <p>Esta transmisión incluye características especiales para la comunidad sorda:</p>
-        <ul>
-            <li><strong>Subtítulos en tiempo real</strong> con descripción de sonidos ambientales</li>
-            <li><strong>Intérprete de LSCh</strong> (Lengua de Señas Chilena)</li>
-            <li><strong>Notificaciones visuales</strong> para goles, faltas y cambios</li>
-            <li><strong>Compatibilidad</strong> con la Federación de Sordos de Chile (FESOCH)</li>
-        </ul>
-        <p>En colaboración con el <strong>Ministerio del Deporte de Chile</strong> y <strong>IND</strong></p>
-    </div>
+    .encabezado-seccion {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
     
-    <script>
-        // Funciones para los controles de accesibilidad
-        function toggleSignLanguage() {
-            const interpreter = document.getElementById('signLanguageInterpreter');
-            if (interpreter.style.display === 'none') {
-                interpreter.style.display = 'block';
-                document.getElementById('interpreterVideo').play();
-            } else {
-                interpreter.style.display = 'none';
-                document.getElementById('interpreterVideo').pause();
-            }
-        }
+    .encabezado-seccion h2 {
+      color: #0039A6;
+      margin: 0;
+    }
+    
+    .filtros {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .filtro {
+      padding: 8px 12px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      background-color: white;
+      color: #333;
+    }
+    
+    .contenedor-tabla {
+      overflow-x: auto;
+    }
+    
+    .tabla-partidos {
+      width: 100%;
+      border-collapse: collapse;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .tabla-partidos th {
+      background: linear-gradient(to right, #0039A6, #D52B1E);
+      color: white;
+      padding: 12px;
+      text-align: left;
+    }
+    
+    .tabla-partidos td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      vertical-align: middle;
+    }
+    
+    .tabla-partidos tr:hover {
+      background-color: #f9f9f9;
+    }
+    
+    .equipo-local {
+      font-weight: bold;
+      color: #0039A6;
+    }
+    
+    .equipo-visitante {
+      font-weight: bold;
+      color: #D52B1E;
+    }
+    
+    .vs {
+      text-align: center;
+      font-weight: bold;
+      color: #7f8c8d;
+    }
+    
+    .estado {
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 0.9em;
+      font-weight: bold;
+      display: inline-block;
+      min-width: 80px;
+      text-align: center;
+    }
+    
+    .programado {
+      background-color: #f39c12;
+      color: white;
+    }
+    
+    .en-juego {
+      background-color: #2ecc71;
+      color: white;
+    }
+    
+    .finalizado {
+      background-color: #3498db;
+      color: white;
+    }
+    
+    .cancelado {
+      background-color: #e74c3c;
+      color: white;
+    }
+    
+    .btn-detalle {
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-weight: bold;
+    }
+    
+    .btn-detalle:hover {
+      background-color: #27ae60;
+    }
+    
+    @media (max-width: 768px) {
+      .encabezado-seccion {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+      
+      .filtros {
+        width: 100%;
+        flex-direction: column;
+      }
+      
+      .tabla-partidos {
+        display: block;
+      }
+      
+      .tabla-partidos thead {
+        display: none;
+      }
+      
+      .tabla-partidos tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+      }
+      
+      .tabla-partidos td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .tabla-partidos td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 12px;
+        font-weight: bold;
+        color: #0039A6;
+      }
+      
+      .btn-detalle {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <script>
+    // Funcionalidad de filtrado
+    document.addEventListener('DOMContentLoaded', function() {
+      const filtroEquipo = document.getElementById('filtro-equipo');
+      const filtroEstado = document.getElementById('filtro-estado');
+      const filas = document.querySelectorAll('.tabla-partidos tbody tr');
+      
+      function filtrarPartidos() {
+        const equipoSeleccionado = filtroEquipo.value;
+        const estadoSeleccionado = filtroEstado.value;
         
-        function increaseTextSize() {
-            const elements = document.querySelectorAll('body, p, li, button, h1, h2, h3');
-            elements.forEach(el => {
-                const currentSize = window.getComputedStyle(el, null).getPropertyValue('font-size');
-                const current = parseFloat(currentSize);
-                el.style.fontSize = (current + 1) + 'px';
-            });
-        }
-        
-        function decreaseTextSize() {
-            const elements = document.querySelectorAll('body, p, li, button, h1, h2, h3');
-            elements.forEach(el => {
-                const currentSize = window.getComputedStyle(el, null).getPropertyValue('font-size');
-                const current = parseFloat(currentSize);
-                el.style.fontSize = (current - 1) + 'px';
-            });
-        }
-        
-        function toggleHighContrast() {
-            document.body.classList.toggle('high-contrast');
-        }
-        
-        // Simulación de subtítulos en vivo con lenguaje chileno
-        const chileanSubtitles = [
-            "[Silbato] El árbitro Marcelo Miranda da comienzo al clásico",
-            "La U inicia con posesión del balón, Sánchez con pelota controlada",
-            "[Griterío en las galerías] La barra brava corea 'Chi-chi-chi-le-le-le'",
-            "¡Falta dura! El jugador de Colo-Colo cae en el medio campo",
-            "¡Gooool de la ASOCH! El delantero anota con un chanfle al ángulo",
-            "El entrenador pide cambio, se prepara el jugador en la banda",
-            "[Silbato] El juez señala tiro libre en el borde del área",
-            "Pitazo final! La ASOCH gana 2-1 en un partido emocionante"
-        ];
-        
-        let subIndex = 0;
-        setInterval(() => {
-            document.getElementById('subtitleText').textContent = chileanSubtitles[subIndex];
-            subIndex = (subIndex + 1) % chileanSubtitles.length;
-        }, 8000);
-        
-        // Notificación visual mejorada (sin alert)
-        function showVisualAlert(message) {
-            const alertDiv = document.createElement('div');
-            alertDiv.style.position = 'fixed';
-            alertDiv.style.top = '20px';
-            alertDiv.style.right = '20px';
-            alertDiv.style.backgroundColor = '#D52B1E';
-            alertDiv.style.color = 'white';
-            alertDiv.style.padding = '15px';
-            alertDiv.style.borderRadius = '8px';
-            alertDiv.style.zIndex = '1000';
-            alertDiv.style.animation = 'fadeInOut 3s';
-            alertDiv.innerHTML = `⚽ ${message}`;
+        filas.forEach(fila => {
+          const equipoLocal = fila.querySelector('.equipo-local').textContent;
+          const equipoVisitante = fila.querySelector('.equipo-visitante').textContent;
+          const estado = fila.querySelector('.estado').textContent;
+          
+          const coincideEquipo = equipoSeleccionado === 'todos' || 
+                               equipoLocal === equipoSeleccionado || 
+                               equipoVisitante === equipoSeleccionado;
+          
+          const coincideEstado = estadoSeleccionado === 'todos' || 
+                               estado === estadoSeleccionado;
+          
+          if (coincideEquipo && coincideEstado) {
+            fila.style.display = '';
+          } else {
+            fila.style.display = 'none';
+          }
+        });
+      }
+      
+      filtroEquipo.addEventListener('change', filtrarPartidos);
+      filtroEstado.addEventListener('change', filtrarPartidos);
+      
+      // Botones de detalles
+      document.querySelectorAll('.btn-detalle').forEach(boton => {
+        boton.addEventListener('click', function() {
+          const fila = this.closest('tr');
+          const fecha = fila.querySelector('td[data-label="Fecha"]').textContent;
+          const hora = fila.querySelector('td[data-label="Hora"]').textContent;
+          const local = fila.querySelector('.equipo-local').textContent;
+          const visitante = fila.querySelector('.equipo-visitante').textContent;
+          const lugar = fila.querySelector('td[data-label="Lugar"]').textContent;
+          const estado = fila.querySelector('.estado').textContent;
+          
+          const detalles = `
+            <strong>Partido:</strong> ${local} vs ${visitante}<br>
+            <strong>Fecha:</strong> ${fecha} a las ${hora}<br>
+            <strong>Lugar:</strong> ${lugar}<br>
+            <strong>Estado:</strong> ${estado}<br><br>
+            <button onclick="this.parentNode.style.display='none'" 
+                    style="padding: 8px 15px; background: #D52B1E; color: white; border: none; border-radius: 4px; cursor: pointer;">
+              Cerrar
+            </button>
+          `;
+          
+          const popup = document.createElement('div');
+          popup.style.position = 'fixed';
+          popup.style.top = '50%';
+          popup.style.left = '50%';
+          popup.style.transform = 'translate(-50%, -50%)';
+          popup.style.backgroundColor = 'white';
+          popup.style.padding = '20px';
+          popup.style.borderRadius = '8px';
+          popup.style.boxShadow = '0 4px 20px rgba(0,0,0,0.2)';
+          popup.style.zIndex = '1000';
+          popup.style.maxWidth = '90%';
+          popup.style.width = '400px';
+          popup.innerHTML = detalles;
+          
+          document.body.appendChild(popup);
+          
+          // Cerrar al hacer clic fuera
+          const overlay = document.createElement('div');
+          overlay.style.position = 'fixed';
+          overlay.style.top = '0';
+          overlay.style.left = '0';
+          overlay.style.right = '0';
+          overlay.style.bottom = '0';
+          overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
+          overlay.style.zIndex = '999';
+          overlay.onclick = function() {
+            document.body.removeChild(popup);
+            document.body.removeChild(overlay);
+          };
+          
+          document.body.appendChild(overlay);
+        });
+      });
+      
+      // Modo alto contraste
+      const body = document.querySelector('body');
+      if (body.classList.contains('high-contrast')) {
+        document.querySelector('.seccion-calendario').style.backgroundColor = '#333';
+        document.querySelectorAll('.tabla-partidos td').forEach(td => {
+          td.style.color = 'white';
+        });
+      }
+    });
+  </script>
+</section>
             
-            document.body.appendChild(alertDiv);
-            setTimeout(() => alertDiv.remove(), 3000);
-        }
-        
-        // Simular eventos del partido
-        setTimeout(() => {
-            showVisualAlert("¡GOOL! ASOCH 1 - CERSOR 0 (minuto 23')");
-        }, 20000);
-    </script>
 </body>
 </html>
