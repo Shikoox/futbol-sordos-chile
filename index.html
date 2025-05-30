@@ -340,7 +340,7 @@
     <!-- Contenido principal -->
     <main class="main-content">
         <section>
-            <h2>Próximo Partido Destacado</h2>
+            <h2>Hoy Partido </h2>
             <div class="team-info" style="display: flex; justify-content: space-around; margin: 30px 0; flex-wrap: wrap;">
                 <div class="team" style="text-align: center; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); min-width: 200px;">
                     <h3>ASOCH</h3>
@@ -360,11 +360,36 @@
                 </div>
             </div>
         </section>
+         <div class="container">
+        <div class="video-container">
+            <!-- NUEVO IFRAME DE YOUTUBE (TU TRANSMISIÓN) -->
+            <iframe 
+                class="youtube-iframe"
+                src="https://www.youtube.com/embed/J-jw5fFpg4o?autoplay=1&cc_load_policy=1&mute=0" 
+                title="Transmisión en vivo - Partido para sordos"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+            
+            <div class="subtitles" id="liveSubtitles">
+                <h3>Subtítulos en tiempo real</h3>
+                <p id="subtitleText">[El partido está por comenzar en el Estadio Nacional...]</p>
+            </div>
+            
+            <div class="controls">
+                <button onclick="toggleSignLanguage()">Mostrar Intérprete de LSCh</button>
+                <button onclick="increaseTextSize()">Aumentar texto</button>
+                <button onclick="decreaseTextSize()">Disminuir texto</button>
+                <button onclick="toggleHighContrast()">Alto contraste</button>
+            </div>
+        </div>
+
         
         <!-- Sección de Calendario -->
         <section id="calendario" class="seccion-calendario">
             <div class="encabezado-seccion">
-                <h2>Calendario de Partidos</h2>
+                <h2>Proxima Calendario de Partidos</h2>
                 <div class="filtros">
                     <select id="filtro-equipo" class="filtro">
                         <option value="todos">Todos los equipos</option>
