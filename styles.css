@@ -65,6 +65,16 @@ header {
     margin: 30px 0;
     flex-wrap: wrap;
 }
+.video-container iframe {
+    width: 100%;
+    max-width: 900px;  /* Puedes cambiar a 1000px si quieres más grande */
+    height: 520px;     /* Cambia a 600px si lo deseas más alto */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: 0 auto;
+}
+
 
 .video-container {
     flex: 2;
