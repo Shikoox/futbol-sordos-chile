@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es-CL">
 <head>
     <meta charset="UTF-8">
@@ -11,29 +11,20 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0;
-            background-color: #f4f6f9;
+            background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
-        }
-
-        h2 {
-            font-size: 1.7rem;
-            margin-bottom: 15px;
-            color: #0039A6;
-            text-align: center;
         }
         
         /* Header con logo */
         .portal-header {
             background: linear-gradient(to right, #0039A6, #D52B1E);
             color: white;
-            padding: 20px;
+            padding: 15px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            border-radius: 0 0 12px 12px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
         }
         
         .logo-container {
@@ -43,13 +34,13 @@
         }
         
         .logo-img {
-            height: 65px;
+            height: 60px;
             width: auto;
         }
         
         .portal-title {
             margin: 0;
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
         
         .portal-subtitle {
@@ -57,28 +48,11 @@
             font-size: 1rem;
             font-weight: normal;
         }
-
-        /* Botón accesibilidad */
-        .header-actions button {
-            padding: 10px 18px;
-            background: #2ecc71;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .header-actions button:hover {
-            background: #27ae60;
-            transform: scale(1.05);
-        }
         
         /* Navegación */
         .portal-nav {
             background-color: #2c3e50;
-            padding: 12px 20px;
+            padding: 10px 20px;
         }
         
         .nav-menu {
@@ -86,109 +60,177 @@
             list-style: none;
             margin: 0;
             padding: 0;
-            gap: 25px;
-            justify-content: center;
+            gap: 20px;
             flex-wrap: wrap;
         }
         
         .nav-menu li a {
             color: white;
             text-decoration: none;
-            font-weight: 600;
-            padding: 6px 12px;
-            border-radius: 6px;
-            transition: background-color 0.3s, transform 0.2s;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
         }
         
         .nav-menu li a:hover {
             background-color: #D52B1E;
-            transform: scale(1.05);
         }
         
         /* Contenido principal */
         .main-content {
-            padding: 30px 20px;
-            background-color: white;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-            margin: 25px 20px;
-            border-radius: 12px;
-        }
-
-        /* Tarjetas equipos */
-        .team {
-            text-align: center;
             padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-            min-width: 220px;
-            transition: transform 0.3s;
-        }
-        .team:hover {
-            transform: translateY(-5px);
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 20px;
+            border-radius: 8px;
         }
         
-        /* Video */
-        .video-container iframe {
+        /* Sección de calendario (estilos existentes mejorados) */
+        .seccion-calendario {
+            padding: 20px;
+            margin: 30px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .encabezado-seccion {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .encabezado-seccion h2 {
+            color: #0039A6;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .filtros {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .filtro {
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background-color: white;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        
+        .contenedor-tabla {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        
+        .tabla-partidos {
             width: 100%;
-            max-width: 900px;
-            height: 520px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-            display: block;
-            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
-        /* Tabla calendario */
         .tabla-partidos th {
             background: linear-gradient(to right, #0039A6, #D52B1E);
             color: white;
             padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .tabla-partidos td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            vertical-align: middle;
         }
         
         .tabla-partidos tr:hover {
-            background-color: #eef2f7;
+            background-color: #f9f9f9;
         }
-
-        /* Estados */
+        
+        .equipo-local {
+            font-weight: bold;
+            color: #0039A6;
+        }
+        
+        .equipo-visitante {
+            font-weight: bold;
+            color: #D52B1E;
+        }
+        
+        .vs {
+            text-align: center;
+            font-weight: bold;
+            color: #7f8c8d;
+        }
+        
         .estado {
             padding: 6px 12px;
             border-radius: 12px;
             font-size: 0.9em;
             font-weight: bold;
             display: inline-block;
-            min-width: 90px;
+            min-width: 80px;
             text-align: center;
         }
-        .programado { background-color: #f39c12; color: white; }
-        .en-juego { background-color: #2ecc71; color: white; }
-        .finalizado { background-color: #3498db; color: white; }
-        .cancelado { background-color: #e74c3c; color: white; }
+        .video-container iframe {
+    width: 100%;
+    max-width: 900px;  /* Puedes cambiar a 1000px si quieres más grande */
+    height: 520px;     /* Cambia a 600px si lo deseas más alto */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: 0 auto;
+}
         
-        /* Botón detalle */
+        .programado {
+            background-color: #f39c12;
+            color: white;
+        }
+        
+        .en-juego {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .finalizado {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .cancelado {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
         .btn-detalle {
-            background-color: #0039A6;
+            background-color: #2ecc71;
             color: white;
             border: none;
-            padding: 8px 14px;
-            border-radius: 6px;
+            padding: 8px 12px;
+            border-radius: 4px;
             cursor: pointer;
+            transition: background-color 0.3s;
             font-weight: bold;
-            transition: 0.3s;
+            font-size: 0.9rem;
         }
         
         .btn-detalle:hover {
-            background-color: #002670;
+            background-color: #27ae60;
         }
         
         /* Footer */
         .portal-footer {
             background-color: #2c3e50;
             color: white;
-            padding: 25px;
+            padding: 20px;
             text-align: center;
             margin-top: 30px;
-            border-radius: 12px 12px 0 0;
+            border-radius: 0 0 8px 8px;
         }
         
         .footer-links {
@@ -202,12 +244,338 @@
         .footer-links a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
         }
         
         .footer-links a:hover {
             text-decoration: underline;
         }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .portal-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .encabezado-seccion {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .filtros {
+                width: 100%;
+                flex-direction: column;
+            }
+            
+            .tabla-partidos {
+                display: block;
+            }
+            
+            .tabla-partidos thead {
+                display: none;
+            }
+            
+            .tabla-partidos tr {
+                display: block;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+            }
+            
+            .tabla-partidos td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .tabla-partidos td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 12px;
+                font-weight: bold;
+                color: #0039A6;
+            }
+            
+            .btn-detalle {
+                width: 100%;
+            }
+        }
     </style>
 </head>
+<body>
+    <!-- Header con logo -->
+    <header class="portal-header">
+        <div class="logo-container">
+            <img src="img/2025-05-26_16-07.png" alt="Logo Fedenaschile" class="logo-img">
+            <div>
+                <h1 class="portal-title">Campeonato Nacional de Fútbol para Sordos de Chile</h1>
+                <p class="portal-subtitle">Portal Oficial del Fútbol para Sordos en Chile</p>
+            </div>
+        </div>
+        <div class="header-actions">
+            <button id="accessibility-btn" style="padding: 8px 15px; background: #2ecc71; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                Accesibilidad
+            </button>
+        </div>
+    </header>
+    
+    <!-- Navegación -->
+    <nav class="portal-nav">
+        <ul class="nav-menu">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#calendario">Calendario</a></li>
+            <li><a href="#">Equipos</a></li>
+            <li><a href="#">Noticias</a></li>
+            <li><a href="#">Galería</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <section>
+            <h2>Hoy Partido Deportes Online en VIVO</h2>
+            <div class="team-info" style="display: flex; justify-content: space-around; margin: 30px 0; flex-wrap: wrap;">
+                <div class="team" style="text-align: center; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); min-width: 200px;">
+                    <h3>ASOCH</h3>
+                    <p>Equipo local</p>
+                    <img src="img/ASOCH.jpeg" alt="Escudo ASOCH" style="max-width: 100px; height: auto; margin: 10px auto;">
+                </div>
+                <div class="team" style="text-align: center; padding: 20px; min-width: 200px;">
+                    <h3>VS</h3>
+                    <p>Campeonato Nacional</p>
+                    <p>Estadio Nacional</p>
+                    <p>14:00 hrs</p>
+                </div>
+                <div class="team" style="text-align: center; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); min-width: 200px;">
+                    <h3>CERSOR</h3>
+                    <p>Equipo visitante</p>
+                    <img src="img/cersor.png" alt="Escudo CERSOR" style="max-width: 100px; height: auto; margin: 10px auto;">
+                </div>
+            </div>
+        </section>
+     <div class="video-container">
+            <!-- NUEVO IFRAME DE YOUTUBE (TU TRANSMISIÓN) -->
+           <iframe 
+        src="https://www.youtube.com/embed/J-jw5fFpg4o?autoplay=1&cc_load_policy=1&mute=0" 
+        title="Transmisión en vivo - Partido para sordos"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+    </iframe>
+               
+        <!-- Sección de Calendario -->
+        <section id="calendario" class="seccion-calendario">
+            <div class="encabezado-seccion">
+                <h2>Proxima Calendario de Partidos</h2>
+                <div class="filtros">
+                    <select id="filtro-equipo" class="filtro">
+                        <option value="todos">Todos los equipos</option>
+                        <option value="ASOCH">ASOCH</option>
+                        <option value="CERSOR">CERSOR</option>
+                        <option value="Deportes Sordos">Deportes Sordos</option>
+                        <option value="Fuerza Sorda">Fuerza Sorda</option>
+                    </select>
+                    <select id="filtro-estado" class="filtro">
+                        <option value="todos">Todos los estados</option>
+                        <option value="Programado">Programado</option>
+                        <option value="En juego">En juego</option>
+                        <option value="Finalizado">Finalizado</option>
+                        <option value="Cancelado">Cancelado</option>
+                    </select>
+                </div>
+            </div>
 
+            <div class="contenedor-tabla">
+                <table class="tabla-partidos">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Local</th>
+                            <th>VS</th>
+                            <th>Visitante</th>
+                            <th>Lugar</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Fecha">15/07/2025</td>
+                            <td data-label="Hora">16:00</td>
+                            <td data-label="Local" class="equipo-local">union</td>
+                            <td class="vs">VS</td>
+                            <td data-label="Visitante" class="equipo-visitante">asoch</td>
+                            <td data-label="Lugar">Estadio Nacional</td>
+                            <td data-label="Estado"><span class="estado programado">Programado</span></td>
+                            <td data-label="Acciones"><button class="btn-detalle">Ver detalles</button></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Fecha">20/07/2025</td>
+                            <td data-label="Hora">17:00</td>
+                            <td data-label="Local" class="equipo-local">CERSOR</td>
+                            <td class="vs">VS</td>
+                            <td data-label="Visitante" class="equipo-visitante">Fuerza Sorda</td>
+                            <td data-label="Lugar">Estadio Santa Laura</td>
+                            <td data-label="Estado"><span class="estado programado">Programado</span></td>
+                            <td data-label="Acciones"><button class="btn-detalle">Ver detalles</button></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Fecha">25/07/2025</td>
+                            <td data-label="Hora">16:00</td>
+                            <td data-label="Local" class="equipo-local">ASOCH</td>
+                            <td class="vs">VS</td>
+                            <td data-label="Visitante" class="equipo-visitante">CERSOR</td>
+                            <td data-label="Lugar">Estadio Nacional</td>
+                            <td data-label="Estado"><span class="estado programado">Programado</span></td>
+                            <td data-label="Acciones"><button class="btn-detalle">Ver detalles</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="portal-footer">
+        <div class="footer-links">
+            <a href="#">Inicio</a>
+            <a href="#calendario">Calendario</a>
+            <a href="#">Reglamento</a>
+            <a href="#">Historia</a>
+            <a href="#">Contacto</a>
+        </div>
+        <p>© 2025 Asociación de Fútbol para Sordos de Chile (ASOCH) - Todos los derechos reservados</p>
+        <p>Desarrollado por el Departamento de Comunicaciones ASOCH</p>
+    </footer>
+
+    <script>
+        // Funcionalidad de accesibilidad
+        document.addEventListener('DOMContentLoaded', function() {
+            // Alternar alto contraste
+            const contrastBtn = document.getElementById('accessibility-btn');
+            contrastBtn.addEventListener('click', function() {
+                document.body.classList.toggle('high-contrast');
+                
+                // Cambiar estilos específicos para alto contraste
+                if (document.body.classList.contains('high-contrast')) {
+                    document.querySelector('.portal-header').style.background = '#000';
+                    document.querySelector('.portal-nav').style.background = '#333';
+                    document.querySelectorAll('.tabla-partidos td').forEach(td => {
+                        td.style.color = 'white';
+                    });
+                    contrastBtn.textContent = 'Modo Normal';
+                } else {
+                    document.querySelector('.portal-header').style.background = 'linear-gradient(to right, #0039A6, #D52B1E)';
+                    document.querySelector('.portal-nav').style.background = '#2c3e50';
+                    document.querySelectorAll('.tabla-partidos td').forEach(td => {
+                        td.style.color = '#333';
+                    });
+                    contrastBtn.textContent = 'Accesibilidad';
+                }
+            });
+            
+            // Funcionalidad de filtrado del calendario
+            const filtroEquipo = document.getElementById('filtro-equipo');
+            const filtroEstado = document.getElementById('filtro-estado');
+            const filas = document.querySelectorAll('.tabla-partidos tbody tr');
+            
+            function filtrarPartidos() {
+                const equipoSeleccionado = filtroEquipo.value;
+                const estadoSeleccionado = filtroEstado.value;
+                
+                filas.forEach(fila => {
+                    const equipoLocal = fila.querySelector('.equipo-local').textContent;
+                    const equipoVisitante = fila.querySelector('.equipo-visitante').textContent;
+                    const estado = fila.querySelector('.estado').textContent;
+                    
+                    const coincideEquipo = equipoSeleccionado === 'todos' || 
+                                         equipoLocal === equipoSeleccionado || 
+                                         equipoVisitante === equipoSeleccionado;
+                    
+                    const coincideEstado = estadoSeleccionado === 'todos' || 
+                                         estado === estadoSeleccionado;
+                    
+                    if (coincideEquipo && coincideEstado) {
+                        fila.style.display = '';
+                    } else {
+                        fila.style.display = 'none';
+                    }
+                });
+            }
+            
+            filtroEquipo.addEventListener('change', filtrarPartidos);
+            filtroEstado.addEventListener('change', filtrarPartidos);
+            
+            // Botones de detalles
+            document.querySelectorAll('.btn-detalle').forEach(boton => {
+                boton.addEventListener('click', function() {
+                    const fila = this.closest('tr');
+                    const fecha = fila.querySelector('td[data-label="Fecha"]').textContent;
+                    const hora = fila.querySelector('td[data-label="Hora"]').textContent;
+                    const local = fila.querySelector('.equipo-local').textContent;
+                    const visitante = fila.querySelector('.equipo-visitante').textContent;
+                    const lugar = fila.querySelector('td[data-label="Lugar"]').textContent;
+                    const estado = fila.querySelector('.estado').textContent;
+                    
+                    const detalles = `
+                        <h3 style="margin-top: 0; color: #0039A6;">${local} vs ${visitante}</h3>
+                        <p><strong>Fecha:</strong> ${fecha} a las ${hora}</p>
+                        <p><strong>Lugar:</strong> ${lugar}</p>
+                        <p><strong>Estado:</strong> <span class="estado ${estado.toLowerCase().replace(' ', '-')}">${estado}</span></p>
+                        <button onclick="this.parentNode.parentNode.remove()" 
+                                style="padding: 8px 15px; background: #D52B1E; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 15px;">
+                            Cerrar
+                        </button>
+                    `;
+                    
+                    const popup = document.createElement('div');
+                    popup.style.position = 'fixed';
+                    popup.style.top = '50%';
+                    popup.style.left = '50%';
+                    popup.style.transform = 'translate(-50%, -50%)';
+                    popup.style.backgroundColor = 'white';
+                    popup.style.padding = '25px';
+                    popup.style.borderRadius = '8px';
+                    popup.style.boxShadow = '0 4px 20px rgba(0,0,0,0.2)';
+                    popup.style.zIndex = '1000';
+                    popup.style.maxWidth = '90%';
+                    popup.style.width = '400px';
+                    popup.innerHTML = detalles;
+                    
+                    document.body.appendChild(popup);
+                    
+                    // Cerrar al hacer clic fuera
+                    const overlay = document.createElement('div');
+                    overlay.style.position = 'fixed';
+                    overlay.style.top = '0';
+                    overlay.style.left = '0';
+                    overlay.style.right = '0';
+                    overlay.style.bottom = '0';
+                    overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
+                    overlay.style.zIndex = '999';
+                    overlay.onclick = function() {
+                        document.body.removeChild(popup);
+                        document.body.removeChild(overlay);
+                    };
+                    
+                    document.body.appendChild(overlay);
+                });
+            });
+        });
+    </script>
